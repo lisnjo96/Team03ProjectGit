@@ -43,7 +43,7 @@ DROP TABLE gallery;
 DROP SEQUENCE gallery_seq;
 
 --13.게시글
-DROP TABLE board_customerservice
+DROP TABLE board_customerservice;
 DROP SEQUENCE board_customerservice_seq;
 
 --14.댓글 정보를 저장할 테이블
