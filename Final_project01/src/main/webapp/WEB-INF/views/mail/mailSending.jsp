@@ -8,6 +8,6 @@ pageEncoding="UTF-8"%>
 <title>mail/mailSending</title>
 </head>
 <body>
-<h3>mail sended</h3>
+<h3>mail sended!</h3>
 </body>
 </html>
