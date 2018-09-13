@@ -60,7 +60,7 @@ public class DataServiceImpl implements DataService {
 		int endRowNum=pageNum*PAGE_ROW_COUNT;
 		
 		//전체 row 의 갯수를 읽어온다.
-		int totalRow=dataDao.getCount();
+		int totalRow=dataDao.getCount(dto);
 		//전체 페이지의 갯수 구하기
 		int totalPageCount=
 				(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
@@ -173,8 +173,6 @@ public class DataServiceImpl implements DataService {
 		String writer=request.getParameter("writer");
 		String title=request.getParameter("title");
 		String content=request.getParameter("content");
-		
-		dto=new DataDto();
 		
 		MultipartFile mFile=dto.getFile();
 		

@@ -15,7 +15,7 @@
    
    <update id="update" parameterType="dataDto">
       UPDATE board_file
-      SET num=#{num},writer=#{writer},title=#{title},content=#{content},regdate=SYSDATE
+      SET num=#{num},writer=#{writer},title=#{title},content=#{content},regdate=SYSDATE,
       <if test="saveFileName != null">
       orgFileName=#{orgFileName},saveFileName=#{saveFileName},
       fileSize=#{fileSize}

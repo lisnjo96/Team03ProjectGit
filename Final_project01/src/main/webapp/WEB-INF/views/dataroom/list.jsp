@@ -124,7 +124,7 @@ p{
 		
 			
 			<c:choose>
-				<c:when test="${startPageNum eq firstPageNum }">
+				<c:when test="${pageNum eq 1 }">
 					<li class="disabled">
 						<a href="list.do?pageNum=${firstPageNum}"><i class="fas fa-angle-double-left"></i></a>
 					</li>
@@ -132,7 +132,7 @@ p{
 						<a href="javascript:"><i class="fas fa-angle-left"></i></a>
 					</li>
 				</c:when>
-				<c:when test="${pageNum gt firstPageNum}">
+				<c:when test="${pageNum gt 1}">
 					<li>
 						<a href="list.do?pageNum=${firstPageNum}"><i class="fas fa-angle-double-left"></i></a>
 					</li>
@@ -159,7 +159,7 @@ p{
 			</c:forEach>
 				
 			<c:choose>
-					<c:when test="${endPageNum eq totalPageCount}">
+					<c:when test="${pageNum eq totalPageCount}">
 						<li class="disabled">
 							<a href="javascript:"><i class="fas fa-angle-right"></i></a>
 						</li>
