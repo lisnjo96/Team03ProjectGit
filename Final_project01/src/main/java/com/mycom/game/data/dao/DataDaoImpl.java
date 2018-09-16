@@ -21,8 +21,8 @@ public class DataDaoImpl implements DataDao {
 	}
 
 	@Override
-	public int getCount() {
-		return session.selectOne("data.getCount");
+	public int getCount(DataDto dto) {
+		return session.selectOne("data.getCount", dto);
 	}
 
 	@Override

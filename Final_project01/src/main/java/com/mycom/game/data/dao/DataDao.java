@@ -6,7 +6,7 @@ import com.mycom.game.data.dto.DataDto;
 
 public interface DataDao {
 	public List<DataDto> getList(DataDto dto);
-	public int getCount();
+	public int getCount(DataDto dto);
 	public void delete(int num);
 	public void addDownCount(int num);
 	public DataDto getData(int num);
