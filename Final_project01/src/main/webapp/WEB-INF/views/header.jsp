@@ -32,7 +32,10 @@
 						
 					</c:when>
 					<c:otherwise>
+						<li><a class="btn" href="${pageContext.request.contextPath}/users/loginform.do?next=${pageContext.request.requestURI}${pageContext.request.queryString}">LOG IN</a></li>
+						<!-- 전페이지 이동 임시 수정 
 						<li><a class="btn" href="${pageContext.request.contextPath}/users/loginform.do">LOG IN</a></li>
+						 -->
 						<li><a class="btn" href="${pageContext.request.contextPath}/users/signup_form.do">SIGN UP</a></li>
 					</c:otherwise>
 				</c:choose>

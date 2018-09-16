@@ -23,20 +23,25 @@
 		<c:when test="${isLoginSuccess }">
 			<p>환영합니다!</p>
 			<h3 class="text-center"> <strong>${id }</strong> 님 로그인 되었습니다.</h3>
-			<script>
-				setTimeout(function() {
-					location.href="../"
-				}, 1500)
-			</script>
-			<a href="${url }">확인</a>
+			
+			
+			 
+			<a class="setTime" href="${url }">확인</a>
 		</c:when>
 		<c:otherwise>
 			<p> 아이디 혹은 비밀번호가 틀려요.</p>
-			<a href="${url }">확인</a>
+			<a class="setTime" href="${url }">확인</a>
 		</c:otherwise>
 	</c:choose>
 	</div>
 </div>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.js"></script>
+<script>
+	setTimeout(function() {
+		var href = $('.setTime').attr('href');
+		window.location.href = href;
+	}, 1500)
+</script>
 </body>
 
 <%@include file="../footer.jsp" %>

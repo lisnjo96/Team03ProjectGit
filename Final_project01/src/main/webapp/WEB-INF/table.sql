@@ -112,7 +112,7 @@ CREATE TABLE basket(
 basket_id NUMBER PRIMARY KEY,	--장바구니 번호
 user_id VARCHAR2(100),	--고객 아이디
 product_id NUMBER,	--상품 코드
-num NUMBER CHECK(remainCount >= 1),	--구입 개수(1개이상 구매해야한다)
+num NUMBER CHECK(num >= 1),	--구입 개수(1개이상 구매해야한다)
 regdate DATE
 );
 

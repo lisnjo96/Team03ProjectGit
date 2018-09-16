@@ -62,20 +62,69 @@ public class UsersController {
 	
 	//로그인 폼 요청 처리
 	@RequestMapping("/users/loginform")
-	public String loginForm(HttpServletRequest request) {
-		
+	public ModelAndView loginForm(HttpServletRequest request, ModelAndView mView) {
 		String url=request.getParameter("url");
-		
 		//만일 전달되지 않았으면
 		if(url==null) {
 			//인덱스로 이동할 수 있도록
-			url=request.getContextPath()+"/";
+			String query=request.getQueryString();
+			System.out.println("여기서 얻는 정보:"+query);
+			
+			//1. ${pageContext.request.queryString} 통해 얻어오는 값 정보 추출
+			int idx = query.indexOf(".jsp");
+			int queryString=idx+4;
+			String result1=query.substring(queryString, query.length());
+			System.out.println("result1: "+result1);
+			
+			//2. ${pageContext.request.queryString} 통해 얻어오는 값 가공
+			String result2=query.substring(0, queryString);
+			System.out.println("result2: "+result2);
+			
+			//3. ${pageContext.request.requestURI} 통해 얻어오는 값 정보 추출
+			int UriString=idx;
+			String result3 = result2.substring(24, result2.length()-4);
+			System.out.println("result3: "+result3);
+			
+			String nextUrl;
+			//가공된 값들로 처리
+			if(result1.length()>1) {
+				System.out.println("길이:"+result1.length());
+				nextUrl=request.getContextPath()+result3+".do"+"?"+result1;
+			}else{
+				System.out.println("길이:"+result1.length());
+				nextUrl=request.getContextPath()+result3+".do";
+			}
+			
+			System.out.println(nextUrl);
+			url=nextUrl;
+
+			mView.addObject("url", url);
+			mView.setViewName("redirect:/users/loginform.do?url="+url);
+			// Spring Framework 에 ModelAndView 객체를 바로 리턴
+			return mView;
 		}
 		//request에 담기
-		request.setAttribute("url", url);
-		
-		return "users/loginform";
+		request.setAttribute("url", url);	
+		System.out.println("2:"+url);
+		mView.setViewName("users/loginform");
+		return mView;
 	}
+	//로그인 폼 요청 처리3 (git 수정 전 임시용 코드)
+//	@RequestMapping("/users/loginform")
+//	public String loginForm3(HttpServletRequest request) {
+//		
+//		String url=request.getParameter("url");
+//		
+//		//만일 전달되지 않았으면
+//		if(url==null) {
+//			//인덱스로 이동할 수 있도록
+//			url=request.getContextPath()+"/";
+//		}
+//		//request에 담기
+//		request.setAttribute("url", url);
+//		
+//		return "users/loginform";
+//	}
 	//로그인 폼 요청 처리2 (예제)
 	public ModelAndView loginForm2(@RequestParam String url, HttpServletRequest request) {
 		
