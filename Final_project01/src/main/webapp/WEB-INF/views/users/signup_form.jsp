@@ -62,8 +62,8 @@ button{
 					</div>
 					<!-- optional -->
 					<div class="top-margin">
-						<label for="address">Name</label>
-						<input type="text" class="form-control" name="email" id="email">
+						<label for="name">Name</label>
+						<input type="text" class="form-control" name="name" id="name">
 					</div>
 					
 					<div class="top-margin">
@@ -77,8 +77,12 @@ button{
 					</div>
 					
 					<div class="top-margin">
-						<label for="address">Address</label>
-						<input type="text" class="form-control" name="address" id="address">
+						<label for="address">Address</label><br />
+						<label for="address">도로명 주소</label>
+						<input type="text" class="form-control" name="address" id="address1" value="" disabled>
+						<label for="address">상세주소</label>
+						<input type="text" class="form-control" name="address" id="address2" value="">
+						
 						<button class="addressSearch">검색</button>
 					</div>
 
@@ -155,13 +159,23 @@ button{
     });
   
 	function popupOpen(){
-		var url= "/signup/addressSearch.do";    //팝업창 페이지 URL
 		var winWidth=700;
 	    var winHeight=600;
 	    var winTop=200;
 	    var winLeft=700;
 	    var popupOption= "width="+winWidth+", height="+winHeight+", left="+winLeft+", left="+winTop;    //팝업창 option
 		window.open('addressSearch.do',"주소 검색",popupOption);	// width=700, height=600, left=500, top=200'
+	}
+	
+	//도로명 주소 전달받는다.
+	function sendData1(data1){
+		console.log("data1 :"+data1);
+		$("#address1").val(data1);
+	}
+	//상세 주소 전달받는다.
+	function sendData2(data2){
+		console.log("data2 :"+data2);
+		$("#address2").val(data2);
 	}
 
 </script>
